@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f6f5ef">
+	<meta name="description" content="Make more of every sunny day with Sun Son Solar. Thoughtful solar and battery solutions, designed around your home.">
+	<title>Sun Son Solar | Make more of the sun</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--ink: #192b25;
+			--green: #245941;
+			--lime: #d4ed71;
+			--paper: #f6f5ef;
+			--line: rgba(25, 43, 37, .16);
+			--muted: #68766f;
+			--display: "Space Grotesk", sans-serif;
+			--body: "DM Sans", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--body); -webkit-font-smoothing: antialiased; }
+		a { color: inherit; text-decoration: none; }
+		button, input, select, textarea { font: inherit; }
+		button, a { -webkit-tap-highlight-color: transparent; }
+		.wrap { width: min(1240px, calc(100% - 64px)); margin-inline: auto; }
+
+		.topline { min-height: 34px; display: flex; align-items: center; justify-content: center; background: var(--green); color: #f7f8f0; font-size: 11px; letter-spacing: .06em; }
+		.topline span { color: var(--lime); margin-right: 7px; }
+		.header { position: relative; z-index: 5; background: var(--paper); }
+		.nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+		.brand { display: inline-flex; align-items: center; gap: 10px; flex: 0 0 auto; }
+		.brand-mark { width: 34px; height: 34px; display: grid; place-items: center; background: var(--lime); border-radius: 50%; }
+		.brand-mark svg { width: 21px; height: 21px; }
+		.brand-name { font-family: var(--display); font-size: 19px; font-weight: 700; letter-spacing: -.7px; }
+		.brand-name small { display: block; margin-top: -3px; font-family: var(--body); font-size: 8px; font-weight: 600; letter-spacing: 2.3px; text-transform: uppercase; }
+		.nav-links { display: flex; align-items: center; gap: 34px; color: #44524b; font-size: 13px; }
+		.nav-links a:not(.button):hover { color: var(--green); }
+		.nav-actions { display: flex; align-items: center; gap: 20px; }
+		.phone-link { font-size: 13px; font-weight: 600; white-space: nowrap; }
+		.button { min-height: 45px; padding: 0 19px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; border-radius: 3px; background: var(--green); color: white; font-size: 13px; font-weight: 600; transition: background .2s, transform .2s; cursor: pointer; }
+		.button:hover { background: #173e2c; transform: translateY(-1px); }
+		.button svg { width: 15px; height: 15px; }
+		.menu-toggle { display: none; width: 42px; height: 42px; padding: 0; border: 1px solid var(--line); border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; }
+		.menu-toggle svg { width: 20px; height: 20px; }
+
+		.hero { min-height: 590px; position: relative; display: flex; align-items: center; overflow: hidden; color: white; background: #344438; }
+		.hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
+		.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16, 34, 27, .86) 0%, rgba(16, 34, 27, .63) 44%, rgba(16, 34, 27, .08) 100%), linear-gradient(0deg, rgba(16, 34, 27, .25), transparent 40%); }
+		.hero-content { position: relative; z-index: 1; padding-block: 86px 112px; animation: arrive .75s ease-out both; }
+		.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 21px; color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.eyebrow::before { content: ""; width: 25px; height: 1px; background: currentColor; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 650px; margin-bottom: 19px; font-family: var(--display); font-size: clamp(50px, 6.7vw, 86px); font-weight: 500; line-height: .99; letter-spacing: -4px; }
+		h1 em { color: var(--lime); font-style: normal; }
+		.hero-copy { max-width: 415px; margin-bottom: 29px; color: rgba(255,255,255,.83); font-size: 16px; line-height: 1.7; }
+		.hero-actions { display: flex; align-items: center; gap: 22px; }
+		.button-lime { background: var(--lime); color: var(--ink); }
+		.button-lime:hover { background: #e1f49c; }
+		.text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+		.text-link svg { width: 15px; height: 15px; }
+		.hero-note { position: absolute; z-index: 1; right: max(32px, calc((100vw - 1240px) / 2)); bottom: 32px; color: rgba(255,255,255,.76); font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+		.trustbar { position: relative; z-index: 2; min-height: 84px; margin-top: -1px; display: flex; align-items: center; background: var(--lime); }
+		.trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+		.trust-intro { font-family: var(--display); font-size: 17px; font-weight: 600; }
+		.trust-item { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; }
+		.trust-item svg { width: 19px; height: 19px; color: var(--green); }
+
+		.section { padding-block: 108px; }
+		.section-head { max-width: 650px; }
+		.section-kicker { margin-bottom: 14px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+		h2 { margin-bottom: 16px; font-family: var(--display); font-size: clamp(36px, 4.3vw, 54px); font-weight: 500; line-height: 1.08; letter-spacing: -2px; }
+		.section-lede { max-width: 510px; margin-bottom: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+		.solutions { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+		.solutions-copy { padding-block: 10px; }
+		.solutions-image-wrap { position: relative; min-height: 420px; }
+		.solutions-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+		.image-caption { position: absolute; right: 0; bottom: 0; padding: 15px 18px; background: var(--lime); font-size: 11px; font-weight: 600; }
+		.solution-list { margin: 32px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+		.solution-list li { padding: 17px 0; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+		.solution-list svg { flex: 0 0 auto; width: 20px; height: 20px; color: var(--green); }
+
+		.band { padding-block: 91px 96px; background: #e8ece3; }
+		.band-heading { display: flex; justify-content: space-between; align-items: end; gap: 36px; margin-bottom: 47px; }
+		.band-heading .section-head { max-width: 650px; }
+		.band-heading .section-lede { max-width: 330px; padding-bottom: 5px; }
+		.steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(25,43,37,.25); }
+		.step { padding: 24px 26px 0 0; }
+		.step + .step { padding-left: 26px; border-left: 1px solid rgba(25,43,37,.2); }
+		.step-number { margin-bottom: 30px; color: var(--green); font-family: var(--display); font-size: 13px; }
+		.step h3 { margin-bottom: 10px; font-family: var(--display); font-size: 22px; font-weight: 600; }
+		.step p { max-width: 300px; margin-bottom: 0; color: #65726b; font-size: 13px; line-height: 1.75; }
+
+		.cta { position: relative; overflow: hidden; padding-block: 82px; background: var(--green); color: white; }
+		.cta::before { content: ""; position: absolute; top: -130px; right: 7%; width: 360px; height: 360px; border: 1px solid rgba(212,237,113,.22); border-radius: 50%; box-shadow: 0 0 0 35px rgba(212,237,113,.04), 0 0 0 70px rgba(212,237,113,.035); }
+		.cta-inner { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+		.cta h2 { max-width: 600px; margin-bottom: 12px; }
+		.cta p { max-width: 470px; margin-bottom: 0; color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.7; }
+		.cta .button { flex: 0 0 auto; }
+		.footer { padding-block: 31px; background: #17251f; color: rgba(255,255,255,.7); }
+		.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+		.footer .brand-name { color: white; }
+		.footer .brand-mark { background: var(--lime); }
+		.footer-copy { margin: 0; font-size: 11px; }
+		.footer-links { display: flex; gap: 22px; font-size: 11px; }
+
+		@keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+		@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+		@media (max-width: 900px) {
+			.wrap { width: min(100% - 44px, 700px); }
+			.nav { min-height: 70px; }
+			.nav-links { gap: 19px; }
+			.phone-link { display: none; }
+			.hero { min-height: 560px; }
+			.hero::after { background: linear-gradient(90deg, rgba(16,34,27,.83), rgba(16,34,27,.33)), linear-gradient(0deg, rgba(16,34,27,.25), transparent 50%); }
+			.trust-inner { flex-wrap: wrap; justify-content: flex-start; padding-block: 20px; gap: 15px 30px; }
+			.trust-intro { width: 100%; }
+			.section { padding-block: 80px; }
+			.solutions { gap: 38px; }
+			.solutions-image-wrap { min-height: 390px; }
+		}
+		@media (max-width: 640px) {
+			.wrap { width: calc(100% - 40px); }
+			.topline { min-height: 31px; font-size: 10px; }
+			.nav { min-height: 66px; }
+			.brand-name { font-size: 18px; }
+			.nav-actions { gap: 10px; }
+			.nav-actions > .button { min-height: 40px; padding-inline: 13px; font-size: 11px; }
+			.menu-toggle { display: grid; place-items: center; }
+			.nav-links { position: absolute; top: 100%; right: 0; left: 0; display: none; padding: 10px 20px 20px; background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 12px 18px rgba(25,43,37,.08); }
+			.nav-links.is-open { display: grid; gap: 0; }
+			.nav-links a:not(.button) { padding: 13px 0; border-bottom: 1px solid var(--line); }
+			.nav-links .button { margin-top: 14px; }
+			.hero { min-height: 600px; align-items: end; }
+			.hero-image { object-position: 58% center; }
+			.hero::after { background: linear-gradient(0deg, rgba(16,34,27,.9) 0%, rgba(16,34,27,.58) 57%, rgba(16,34,27,.08) 100%); }
+			.hero-content { padding-block: 60px 90px; }
+			h1 { max-width: 480px; font-size: clamp(50px, 13vw, 68px); letter-spacing: -2.8px; }
+			.hero-copy { max-width: 360px; font-size: 14px; }
+			.hero-actions { align-items: flex-start; flex-direction: column; gap: 17px; }
+			.hero-note { right: 20px; bottom: 18px; font-size: 9px; }
+			.trust-inner { gap: 15px 20px; }
+			.trust-item { font-size: 11px; }
+			.section { padding-block: 68px; }
+			h2 { font-size: 38px; letter-spacing: -1.5px; }
+			.solutions { grid-template-columns: 1fr; gap: 30px; }
+			.solutions-image-wrap { min-height: 290px; grid-row: 2; }
+			.solution-list { margin-top: 25px; }
+			.band { padding-block: 69px; }
+			.band-heading { display: block; margin-bottom: 31px; }
+			.band-heading .section-lede { margin-top: 17px; }
+			.steps { grid-template-columns: 1fr; }
+			.step, .step + .step { padding: 21px 0; border-left: 0; border-bottom: 1px solid rgba(25,43,37,.2); }
+			.step-number { margin-bottom: 13px; }
+			.step p { max-width: 420px; }
+			.cta { padding-block: 65px; }
+			.cta-inner { align-items: flex-start; flex-direction: column; gap: 25px; }
+			.cta h2 { font-size: 38px; }
+			.footer-inner { align-items: flex-start; flex-direction: column; }
+			.footer-links { flex-wrap: wrap; }
+		}
+	</style>
+</head>
+<body>
+	<div class="topline"><span>●</span> A brighter way to power home</div>
+	<header class="header">
+		<nav class="nav wrap" aria-label="Main navigation">
+			<a class="brand" href="#top" aria-label="Sun Son Solar home">
+				<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></span>
+				<span class="brand-name">sun son<small>solar</small></span>
+			</a>
+			<div class="nav-links" id="nav-links">
+				<a href="#solutions">Solar solutions</a>
+				<a href="#how-it-works">How it works</a>
+				<a href="#about">Our approach</a>
+				<a class="button" href="#contact">Get a free quote <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+			</div>
+			<div class="nav-actions">
+				<a class="phone-link" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+				<a class="button" href="#contact">Get a quote</a>
+				<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+			</div>
+		</nav>
+	</header>
+
+	<main id="top">
+		<section class="hero" aria-labelledby="hero-title">
+			<img class="hero-image" src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2200&q=85" alt="Rows of solar panels catching the afternoon sun">
+			<div class="hero-content wrap">
+				<p class="eyebrow">A little more independence</p>
+				<h1 id="hero-title">Make more of <em>the sun.</em></h1>
+				<p class="hero-copy">Solar that feels right for your home, your rhythm, and the way you want to live. We make the switch feel refreshingly simple.</p>
+				<div class="hero-actions">
+					<a class="button button-lime" href="#contact">See what solar can do <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+					<a class="text-link" href="#solutions">Explore solutions <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 4v12m-5-5 5 5 5-5"/></svg></a>
+				</div>
+			</div>
+			<div class="hero-note">Thoughtful energy, made personal</div>
+		</section>
+
+		<section class="trustbar" aria-label="Our commitments">
+			<div class="trust-inner wrap">
+				<div class="trust-intro">Good energy, from day one.</div>
+				<div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.3 3.2 7.8 7.5 9.5 4.3-1.7 7.5-5.2 7.5-9.5V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>Carefully vetted equipment</div>
+				<div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg>A team that stays with you</div>
+				<div class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5a5 5 0 0 0 10 0c0-2.8-5-4-5-8a5 5 0 0 0-5 5Z"/></svg>Designed around your home</div>
+			</div>
+		</section>
+
+		<section class="section" id="solutions">
+			<div class="solutions wrap">
+				<div class="solutions-image-wrap">
+					<img class="solutions-image" src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?auto=format&fit=crop&w=1200&q=85" alt="Solar panels installed on a modern home">
+					<div class="image-caption">Energy that works for your everyday.</div>
+				</div>
+				<div class="solutions-copy" id="about">
+					<p class="section-kicker">Your home, your energy</p>
+					<h2>A smarter fit for the way you live.</h2>
+					<p class="section-lede">Every home is different. We take the time to understand yours, then bring the right people and technology together to make solar feel like a natural next step.</p>
+					<ul class="solution-list">
+						<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Solar panel systems</li>
+						<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>Home battery storage</li>
+						<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>EV charging, ready when you are</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section class="band" id="how-it-works">
+			<div class="wrap">
+				<div class="band-heading">
+					<div class="section-head">
+						<p class="section-kicker">Clear from the start</p>
+						<h2>Good things happen in good company.</h2>
+					</div>
+					<p class="section-lede">No guesswork, no pressure. Just a thoughtful team to guide you through each step, at your pace.</p>
+				</div>
+				<div class="steps">
+					<article class="step"><div class="step-number">01 / GET TO KNOW YOU</div><h3>Start with a conversation</h3><p>Tell us about your home and what matters to you. We’ll listen first, then answer your questions in plain English.</p></article>
+					<article class="step"><div class="step-number">02 / MAKE A PLAN</div><h3>A design that makes sense</h3><p>We look at your roof, energy use, and goals to put together a clear recommendation built around your needs.</p></article>
+					<article class="step"><div class="step-number">03 / POWER UP</div><h3>We take it from here</h3><p>Our team handles the details, keeps you in the loop, and gets your system ready for its first sunny day.</p></article>
+				</div>
+			</div>
+		</section>
+
+		<section class="cta" id="contact">
+			<div class="cta-inner wrap">
+				<div>
+					<p class="section-kicker" style="color: var(--lime)">Your next step starts here</p>
+					<h2>Curious what solar could look like at your place?</h2>
+					<p>Tell us a little about your home. We’ll help you figure out whether solar is a good fit, with no pressure to make a decision.</p>
+				</div>
+				<a class="button button-lime" href="mailto:?subject=Solar%20assessment%20with%20Sun%20Son%20Solar">Request a free assessment <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg></a>
+			</div>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<div class="footer-inner wrap">
+			<a class="brand" href="#top" aria-label="Sun Son Solar home">
+				<span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></span>
+				<span class="brand-name">sun son<small>solar</small></span>
+			</a>
+			<p class="footer-copy">© <span id="year">2026</span> Sun Son Solar. A brighter way forward.</p>
+			<div class="footer-links"><a href="#solutions">Solutions</a><a href="#how-it-works">Our process</a><a href="#contact">Get in touch</a></div>
+		</div>
+	</footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const navLinks = document.querySelector('#nav-links');
+
+		menuButton.addEventListener('click', () => {
+			const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+			menuButton.setAttribute('aria-expanded', String(!isOpen));
+			menuButton.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+			navLinks.classList.toggle('is-open', !isOpen);
+		});
+
+		navLinks.addEventListener('click', (event) => {
+			if (event.target.closest('a')) {
+				menuButton.setAttribute('aria-expanded', 'false');
+				menuButton.setAttribute('aria-label', 'Open menu');
+				navLinks.classList.remove('is-open');
+			}
+		});
+
+		document.querySelector('#year').textContent = new Date().getFullYear();
+	</script>
+</body>
+</html>
